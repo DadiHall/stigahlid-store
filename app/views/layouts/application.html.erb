@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stigahlid</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'https://js.braintreegateway.com/js/braintree-2.27.0.min.js' %>
+  
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="collapse navbar-collapse" id="collapse-navigation">
+	<ul class="nav navbar-nav">
+		<li>
+			<%= link_to 'Home', root_path %>
+		</li>
+		<li>	
+			<%= link_to 'About', about_path %>
+		</li>
+		<li>	
+			<%= link_to 'Contact', new_contact_path %>
+		</li>
+		<li>
+			<%= link_to 'Shop', shop_path %>
+		</li>	
+<li>
+<% if @cart.total_price > 0 %>
+		<%= link_to @cart, class: 'menu-cart' do %>
+			<i class="fa fa-shopping-cart"></i>
+				<%= number_to_currency @cart.total_price %>
+				<% end %>
+				<% else %>
+				<a href="#" class="menu-cart"><i class="fa fa-shopping-cart"></i> $0.00</a>
+
+		
+
+    <% end %>
+</li>  
+</ul>  
+
+<%= render 'shared/message' %>
+<%= yield %>
+
+</body>
+</html>

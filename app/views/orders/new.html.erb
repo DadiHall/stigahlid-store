@@ -1,0 +1,24 @@
+<div class="container align-vertical hero ">
+	<div class="row">
+		<div class="col-md-5 text-left">
+			<h1> Your order </h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+
+	<%= render 'form' %>
+
+<br>
+
+
+<!-- Script for Braintree -->
+
+
+<script>
+braintree.setup('<%= @client_token %>', 'dropin', {
+  container: 'payment-form'
+});
+</script>
